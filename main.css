@@ -1,0 +1,179 @@
+/* ---------------------------------------------------------------------- */
+/* 1. GLOBAL & BODY STYLES */
+/* ---------------------------------------------------------------------- */
+body {
+    display: flex;
+    flex-direction: column;    /* Stack elements vertically */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: url('src/bg.gif') no-repeat center/cover; /* Your background image */
+    font-family: 'Roboto Condensed', sans-serif;
+    gap: 20px; /* Space between .profile-card-wrapper and .music */
+}
+
+/* ---------------------------------------------------------------------- */
+/* 2. PROFILE CARD WRAPPER & PFP STYLES */
+/* ---------------------------------------------------------------------- */
+/* This is the container that gives the PFP its coordinates */
+.profile-card-wrapper {
+    position: relative;
+    width: 300px;
+    margin-top: 50px; /* Gives space from the top of the screen */
+}
+
+/* The Profile Picture (The "o") */
+.profile-picture {
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; /* Makes it perfectly circular */
+    object-fit: cover; 
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+    
+    /* Absolute positioning to move it outside the flow */
+    position: absolute; 
+    z-index: 10; /* Ensures it sits on top of the box */
+
+    /* Centering logic: Move 50% from left, then shift back half its own width */
+    left: 50%; 
+    transform: translateX(-50%); 
+    
+    /* Moves it up by half its height to sit centered on the top edge */
+    top: -25px;
+    transition: filter 2s;
+}
+
+.profile-picture:hover {
+    filter: drop-shadow(0 0 2px white) drop-shadow(0 0 10px white);
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* 3. BOX STYLES (MODIFIED FOR COMPACT HEIGHT) */
+/* ---------------------------------------------------------------------- */
+.box {
+    width: 300px;
+    /* FIX: The fixed height property is REMOVED so the box shrinks to fit content. */
+    
+    background: transparent;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    
+    /* Pushes content down below the PFP */
+    padding-top: 50px; 
+    /* Added space above the absolute icons at the bottom */
+    padding-bottom: 50px; 
+    
+    /* Content alignment */
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: flex-start; /* Keeps content near the top padding */
+    
+    position: relative; 
+    color: white;
+    font-size: 1.2rem;
+    transition: filter 2s;
+}
+
+.box:hover {
+    filter: drop-shadow(0 0 2px white) drop-shadow(0 0 10px white);
+}
+
+/* ---------------------------------------------------------------------- */
+/* 4. MUSIC PLAYER STYLES */
+/* ---------------------------------------------------------------------- */
+.music {
+    width: 300px;
+    height: 20px;
+    background: transparent;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    position: relative;
+    padding: 10px 15px;
+    color: white;
+    font-size: 1.2rem;
+    transition: filter 2s;
+}
+.music:hover {
+    filter: drop-shadow(0 0 2px white) drop-shadow(0 0 10px white);
+}
+
+/* ---------------------------------------------------------------------- */
+/* 5. TEXT & ICON STYLES */
+/* ---------------------------------------------------------------------- */
+
+/* Container for the social icons (inside the box) */
+.box .icons {
+    position: absolute;
+    bottom: 10px; 
+    /* Centers the icon bar horizontally */
+    left: 50%; 
+    transform: translateX(-50%); 
+    display: flex;
+    gap: 10px; 
+}
+.icons {
+    filter: drop-shadow(0 0 2px white) drop-shadow(0 0 100px white) brightness(0) invert(1);
+    transition: filter 1s, transform 0.3s;
+}
+.scale {
+    transition: filter 1s, transform 0.3s; 
+}
+.scale:hover {
+    filter: drop-shadow(0 0 2px white) drop-shadow(0 0 10px white) brightness(0) invert(1);
+    transform: scale(0.9);
+}
+.name{
+    text-shadow: 1cm;
+    filter: drop-shadow(0 0 2px white) drop-shadow(0 0 75px white) brightness(0) invert(1);
+    font-weight: bold;
+    font-size: x-large;
+    transition: filter 1s;
+}
+.name:hover{
+    filter: drop-shadow(0 0 2px white) drop-shadow(0 0 10px white) brightness(0) invert(1);
+}
+.pronouns {
+    font-size: 0.8rem;
+    color: rgba(177, 177, 177, 0.8);
+    text-shadow: 0 0 5px rgb(136, 136, 136);
+    margin-top: 5px;
+    transition: filter 1s;
+}
+
+/* Button/Link Container Styles (mostly unused in current HTML structure but kept) */
+.container {
+    position: relative;
+    width: 50%;
+}
+.container img {
+    width: 100%;
+    height: auto;
+}
+.container .btn {
+    position: absolute;
+    bottom: -370%;
+    left: 120%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.container .btn:hover {
+    background-color: black;
+}
